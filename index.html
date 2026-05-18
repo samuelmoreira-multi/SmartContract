@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CertChain Protocol</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="logo">CERT<span>CHAIN</span></div>
+      <div id="wallet-info">🔗 <span id="wallet-address"></span></div>
+      <button id="btn-connect" onclick="connectWallet()">
+        CONECTAR METAMASK
+      </button>
+    </header>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-label">Rede</div>
+        <div class="stat-value" id="stat-network">—</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Saldo ETH</div>
+        <div class="stat-value" id="stat-eth">—</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Saldo CERT</div>
+        <div class="stat-value" id="stat-cert">—</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">ETH/USD</div>
+        <div class="stat-value" id="stat-price">—</div>
+      </div>
+    </div>
+
+    <!-- GRID DE CONTRATOS -->
+    <div class="grid">
+      <!-- CARD: CertificateToken -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot" style="background: var(--accent)"></div>
+          <div class="card-title">CertificateToken</div>
+          <div class="card-badge">ERC-20</div>
+        </div>
+        <div class="card-body">
+          <div class="field">
+            <label>Endereço destino</label>
+            <input id="token-to" placeholder="0x..." />
+          </div>
+          <div class="field">
+            <label>Quantidade (CERT)</label>
+            <input id="token-amount" type="number" placeholder="100" />
+          </div>
+          <button class="btn btn-blue" onclick="transferToken()">
+            TRANSFERIR
+          </button>
+          <hr class="divider" />
+          <button class="btn btn-outline" onclick="getTokenBalance()">
+            VER MEU SALDO
+          </button>
+          <div class="result-box" id="result-token"></div>
+        </div>
+      </div>
+
+      <!-- CARD: CertificateNFT -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot" style="background: var(--accent3)"></div>
+          <div class="card-title">CertificateNFT</div>
+          <div class="card-badge">ERC-721</div>
+        </div>
+        <div class="card-body">
+          <div class="field">
+            <label>Endereço do aluno</label>
+            <input id="nft-student" placeholder="0x..." />
+          </div>
+          <div class="field">
+            <label>Nome do aluno</label>
+            <input id="nft-name" placeholder="João Silva" />
+          </div>
+          <div class="field">
+            <label>Nome do curso</label>
+            <input id="nft-course" placeholder="Web3 Avançado" />
+          </div>
+          <div class="field">
+            <label>Emissor</label>
+            <input id="nft-issuer" placeholder="SENAI" />
+          </div>
+          <button class="btn btn-red" onclick="mintNFT()">
+            EMITIR CERTIFICADO
+          </button>
+          <hr class="divider" />
+          <div class="field">
+            <label>Token ID para consultar</label>
+            <input id="nft-query-id" type="number" placeholder="0" />
+          </div>
+          <button class="btn btn-outline" onclick="getCertificate()">
+            CONSULTAR CERTIFICADO
+          </button>
+          <div class="result-box" id="result-nft"></div>
+        </div>
+      </div>
+
+      <!-- CARD: CertificateStaking -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot" style="background: var(--accent2)"></div>
+          <div class="card-title">CertificateStaking</div>
+          <div class="card-badge">STAKING</div>
+        </div>
+        <div class="card-body">
+          <div class="field">
+            <label>Valor em ETH para stake</label>
+            <input
+              id="stake-amount"
+              type="number"
+              placeholder="0.01"
+              step="0.001"
+            />
+          </div>
+          <button class="btn btn-green" onclick="doStake()">FAZER STAKE</button>
+          <hr class="divider" />
+          <div class="field">
+            <label>Valor em ETH para retirar</label>
+            <input
+              id="unstake-amount"
+              type="number"
+              placeholder="0.01"
+              step="0.001"
+            />
+          </div>
+          <button class="btn btn-outline" onclick="doUnstake()">
+            RETIRAR STAKE
+          </button>
+          <button class="btn btn-outline" onclick="claimReward()">
+            RESGATAR RECOMPENSAS
+          </button>
+          <button class="btn btn-outline" onclick="getStakingInfo()">
+            VER MEU STAKE
+          </button>
+          <div class="result-box" id="result-staking"></div>
+        </div>
+      </div>
+
+      <!-- CARD: CertificateGovernance -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot" style="background: var(--accent4)"></div>
+          <div class="card-title">CertificateGovernance</div>
+          <div class="card-badge">DAO</div>
+        </div>
+        <div class="card-body">
+          <div class="field">
+            <label>Endereço do emissor</label>
+            <input id="gov-emitter" placeholder="0x..." />
+          </div>
+          <div class="field">
+            <label>Descrição da proposta</label>
+            <input id="gov-desc" placeholder="Aprovar SENAI como emissor" />
+          </div>
+          <button class="btn btn-purple" onclick="createProposal()">
+            CRIAR PROPOSTA
+          </button>
+          <hr class="divider" />
+          <div class="field">
+            <label>ID da proposta para votar</label>
+            <input id="gov-proposal-id" type="number" placeholder="0" />
+          </div>
+          <div style="display: flex; gap: 8px">
+            <button
+              class="btn btn-green"
+              style="margin-top: 4px"
+              onclick="vote(true)"
+            >
+              VOTAR A FAVOR
+            </button>
+            <button
+              class="btn btn-red"
+              style="margin-top: 4px"
+              onclick="vote(false)"
+            >
+              VOTAR CONTRA
+            </button>
+          </div>
+          <hr class="divider" />
+          <div class="field">
+            <label>ID da proposta para executar</label>
+            <input id="gov-exec-id" type="number" placeholder="0" />
+          </div>
+          <button class="btn btn-outline" onclick="executeProposal()">
+            EXECUTAR PROPOSTA
+          </button>
+          <button class="btn btn-outline" onclick="getProposal()">
+            CONSULTAR PROPOSTA
+          </button>
+          <div class="result-box" id="result-gov"></div>
+        </div>
+      </div>
+    </div>
+    <!-- TOAST CONTAINER -->
+    <div id="toast-container"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
