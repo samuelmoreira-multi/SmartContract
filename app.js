@@ -1,11 +1,8 @@
-// ─────────────────────────────────────────
-//  SUBSTITUA PELOS ENDEREÇOS APÓS O DEPLOY
-// ─────────────────────────────────────────
 const ADDRESSES = {
-  token: "0x76666c7B31Aa0953A33D399aF45ccd092C9eBC31",
-  nft: "0xbcf3238fCb1984362a4D3BD5c918106188646375",
-  staking: "0x1067D8E9b93Fb26ba524051e95F21B6B1f0E3e93",
-  governance: "0x3d407Cd0F5D5DA19cB30cd8Bd506cBe0c36e5678",
+  token: "0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8",
+  nft: "0xf8e81D47203A594245E36C48e151709F0C19fBe8",
+  staking: "0xD7ACd2a9FD159E69Bb102A1ca21C9a3e3A5F771B",
+  governance: "0x7EF2e0048f5bAeDe046f6BF797943daF4ED8CB47",
 };
 
 // ─── ABIs mínimas ───
