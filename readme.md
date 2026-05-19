@@ -14,10 +14,10 @@ Certificados digitais tradicionais são emitidos de forma centralizada, facilmen
 
 | Contrato                  | Endereço                                     | Etherscan                                                                              |
 | ------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------- |
-| CertificateToken (ERC-20) | `0x76666c7B31Aa0953A33D399aF45ccd092C9eBC31` | [Ver](https://sepolia.etherscan.io/address/0x76666c7B31Aa0953A33D399aF45ccd092C9eBC31) |
-| CertificateNFT (ERC-721)  | `0xbcf3238fCb1984362a4D3BD5c918106188646375` | [Ver](https://sepolia.etherscan.io/address/0xbcf3238fCb1984362a4D3BD5c918106188646375) |
-| CertificateStaking        | `0x1067D8E9b93Fb26ba524051e95F21B6B1f0E3e93` | [Ver](https://sepolia.etherscan.io/address/0x1067D8E9b93Fb26ba524051e95F21B6B1f0E3e93) |
-| CertificateGovernance     | `0x3d407Cd0F5D5DA19cB30cd8Bd506cBe0c36e5678` | [Ver](https://sepolia.etherscan.io/address/0x3d407Cd0F5D5DA19cB30cd8Bd506cBe0c36e5678) |
+| CertificateToken (ERC-20) | `0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8` | [Ver](https://sepolia.etherscan.io/address/0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8) |
+| CertificateNFT (ERC-721)  | `0xf8e81D47203A594245E36C48e151709F0C19fBe8` | [Ver](https://sepolia.etherscan.io/address/0xf8e81D47203A594245E36C48e151709F0C19fBe8) |
+| CertificateStaking        | `0xD7ACd2a9FD159E69Bb102A1ca21C9a3e3A5F771B` | [Ver](https://sepolia.etherscan.io/address/0xD7ACd2a9FD159E69Bb102A1ca21C9a3e3A5F771B) |
+| CertificateGovernance     | `0x7EF2e0048f5bAeDe046f6BF797943daF4ED8CB47` | [Ver](https://sepolia.etherscan.io/address/0x7EF2e0048f5bAeDe046f6BF797943daF4ED8CB47) |
 
 ---
 
@@ -145,7 +145,7 @@ O arquivo `index.html` é uma interface web standalone (sem frameworks) que cone
 1. Clone o repositório
 
 bash
-git clone https://github.com/seu-usuario/certchain-protocol.git
+git clone https://github.com/samuelmoreira-multi/SmartContract
 cd certchain-protocol
 
 2. Abra o `index.html` diretamente no navegador — não precisa de servidor
@@ -164,8 +164,8 @@ certchain-protocol/
 │ ├── CertificateNFT.sol
 │ ├── CertificateStaking.sol
 │ └── CertificateGovernance.sol
-├── index.html
-├── README.md
+└── index.html
+└── README.md
 
 ---
 
